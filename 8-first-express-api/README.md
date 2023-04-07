@@ -4,6 +4,7 @@
   - [Setup a simple server](#setup-a-simple-server🚀)
   - [Defining Routes](#defining-routes)
 - [Route parameters](#route-parameters)
+- [Development Dependencies](#development-dependencies🧰)
 
 ---
 
@@ -100,3 +101,29 @@ app.get("/friends/:id", (req, res) => {
   }
 });
 ```
+
+---
+
+# Development Dependencies🧰
+
+1. Development dependencies are the dependencies that need only to build the project, these dependencies are increase the development experience.
+2. Example: **nodemon**
+   > **nodemon** helps to auto restarting the server when the changes made in the code without restarting the server manually.
+
+```bash
+npm install nodemon --save-dev
+```
+
+```json
+// the updated package.json file
+ "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "watch": "nodemon index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+```
+
+3. Now you can run `npm run watch`. Here run command is used for custom or user defined script.
