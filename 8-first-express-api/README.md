@@ -7,6 +7,8 @@
   - [Defining Routes](#defining-routes)
 - [Route parameters](#route-parameters)
 - [Development Dependencies](#development-dependencies)
+- [Middleware](#middleware)
+- [Model View Controller (MVC)](#model-view-controller-mvc)
 
 ---
 
@@ -137,6 +139,64 @@ npm install nodemon --save-dev
 ```
 
 3. Now you can run `npm run watch`. Here run command is used for custom or user defined script.
+
+[🔼 Back to top](#table-of-contents)
+
+---
+
+# Middleware
+
+1. Middleware are the functions that run between or in the middle of request comes in and response out from the API.
+2. ![image](https://user-images.githubusercontent.com/77252075/230665303-ddaf9bd8-c574-47d9-b029-1bfc12429833.png)
+
+```javascript
+app.use(function (req, res, next) {
+  next();
+});
+```
+
+3. From the above image after the middleware 1 **next()** is called and it goes on until the end middleware comes.
+4. **next()** function is responsible for order of middleware called.
+5. Example:
+
+- ```javascript
+  app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+    // next() is the next middleware
+  });
+
+  app.get("/friends/:id", (req, res) => {
+    // read the parameter value
+    const id = req.params.id;
+    const friend = friends[id];
+
+    if (friend) {
+      res.status(200).json(friend);
+    } else {
+      res.status(404).json("data not found");
+    }
+  });
+  ```
+
+  - after the next() function the below route is get executed and again return back to the **app.use** middleware but before the(bottom to top moving) **next()** comes the response is sent. (look the above diagram)
+
+[🔼 Back to top](#table-of-contents)
+
+---
+
+# Model View Controller (MVC)
+
+1. MVC is a software design pattern.
+2. Which helps to organize our code. i.e easier debug, scale etc.
+3. Most **express** applicaiton use MVC.
+4. ![image](https://user-images.githubusercontent.com/77252075/230685452-6abfa4f5-680e-4380-8b05-be244f360da2.png)
+
+> Controller - User uses the controllers by making request. The controller understand the request and make some manipulation inside the model. The controller's responsibility is to pull, modify, and provide data to the user.
+
+> Model - Model is our data (in memory array, database, API, or a JSON object). The model include function that helps to access the database.
+
+> View - View is the applicaiton made in html that uses the data given by the model or controller. The view's job is to decide what the user will see on their screen, and how.
 
 [🔼 Back to top](#table-of-contents)
 

@@ -1,6 +1,6 @@
 const express = require("express");
 
-const PORT = 3000;
+const PORT = 5000;
 
 const friends = [
   {
@@ -22,6 +22,31 @@ app.get("/api", (req, res) =>
     api: "key",
   })
 );
+
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+  // next() is the next middleware
+});
+
+app.use(express.json());
+
+// post request
+app.post("/friends", (req, res) => {
+  if (!req.body.name) {
+    return res.status(400).json({
+      err: "missing friend name",
+    });
+  }
+  const newFriends = {
+    id: friends.length + 1,
+    name: req.body.name,
+  };
+  friends.push(newFriends);
+  res.json(newFriends);
+});
+
+app.get("/friends", (req, res) => res.json(friends));
 
 app.get("/friends/:id", (req, res) => {
   // read the parameter value
