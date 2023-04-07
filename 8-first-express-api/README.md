@@ -1,21 +1,23 @@
 ## Table of contents 📦
 
-- [Why Express](#why-express❓)
-  - [Setup a simple server](#setup-a-simple-server🚀)
+- [Why Express](#why-express)
+  - [Setup a simple server](#setup-a-simple-server)
   - [Defining Routes](#defining-routes)
 - [Route parameters](#route-parameters)
-- [Development Dependencies](#development-dependencies🧰)
+- [Development Dependencies](#development-dependencies)
 
 ---
 
-# Why Express❓
+# Why Express
 
 1. Express js is a framwork build on top of node js, which provide minimum setup to create and run a web server.
 2. Express lets you build single page, multi page and hybrid web and mobile applications.
 3. Express comes with a default template engine.
 4. Express support MVC (Model-View-Controller) architecture to design web application.
 
-## Setup a simple server🚀
+[🔼 Back to top](#table-of-contents-📦)
+
+## Setup a simple server
 
 - Install the express package📦
 
@@ -104,7 +106,7 @@ app.get("/friends/:id", (req, res) => {
 
 ---
 
-# Development Dependencies🧰
+# Development Dependencies
 
 1. Development dependencies are the dependencies that need only to build the project, these dependencies are increase the development experience.
 2. Example: **nodemon**
