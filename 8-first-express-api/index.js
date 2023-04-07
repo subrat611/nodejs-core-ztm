@@ -2,6 +2,17 @@ const express = require("express");
 
 const PORT = 3000;
 
+const friends = [
+  {
+    id: 0,
+    name: "subrat",
+  },
+  {
+    id: 1,
+    name: "hari",
+  },
+];
+
 const app = express();
 
 app.get("/", (req, res) => res.send("Hello World"));
@@ -11,5 +22,17 @@ app.get("/api", (req, res) =>
     api: "key",
   })
 );
+
+app.get("/friends/:id", (req, res) => {
+  // read the parameter value
+  const id = req.params.id;
+  const friend = friends[id];
+
+  if (friend) {
+    res.status(200).json(friend);
+  } else {
+    res.status(404).json("data not found");
+  }
+});
 
 app.listen(PORT, () => console.log(`server start in port ${PORT}`));

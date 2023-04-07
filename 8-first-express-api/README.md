@@ -3,6 +3,7 @@
 - [Why Express](#why-express❓)
   - [Setup a simple server](#setup-a-simple-server🚀)
   - [Defining Routes](#defining-routes)
+- [Route parameters](#route-parameters)
 
 ---
 
@@ -75,4 +76,27 @@ app.get("/api", (req, res) =>
 ```
 
 - Express handle all the response headers `Content-Type` by own.
-  ![image](https://user-images.githubusercontent.com/77252075/230498837-5031f717-6c35-4194-be67-88f86d9e2543.png)
+- ![image](https://user-images.githubusercontent.com/77252075/230498837-5031f717-6c35-4194-be67-88f86d9e2543.png)
+
+---
+
+# Route parameters
+
+1. To get dynamic route parameters express gives parameter syntax `:<name>`
+
+```javascript
+app.get("/friends/:id", (req, res) => {
+  // read the parameter value
+  const id = req.params.id;
+  const friend = friends[id];
+
+  // it's important to validate the user input
+  // not undefind
+  if (friend) {
+    res.status(200).json(friend);
+  } else {
+    // you can use method chaining to set status and then json response
+    res.status(404).json("data not found");
+  }
+});
+```
