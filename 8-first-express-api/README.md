@@ -1,4 +1,4 @@
-## Table of contents 📦
+## Table of contents
 
 - [Why Express](#why-express)
   - [Setup a simple server](#setup-a-simple-server)
@@ -15,7 +15,7 @@
 3. Express comes with a default template engine.
 4. Express support MVC (Model-View-Controller) architecture to design web application.
 
-[🔼 Back to top](#table-of-contents-📦)
+[🔼 Back to top](#table-of-contents)
 
 ## Setup a simple server
 
@@ -63,6 +63,8 @@ you will get "Cannot GET /"
 
 - Or you can change the name of `index.js` file to `server.js` and directly run `npm start` without setting config of `package.json`
 
+[🔼 Back to top](#table-of-contents)
+
 ## Defining Routes
 
 - To define a route handle you have to do this
@@ -80,6 +82,8 @@ app.get("/api", (req, res) =>
 
 - Express handle all the response headers `Content-Type` by own.
 - ![image](https://user-images.githubusercontent.com/77252075/230498837-5031f717-6c35-4194-be67-88f86d9e2543.png)
+
+[🔼 Back to top](#table-of-contents)
 
 ---
 
@@ -103,6 +107,8 @@ app.get("/friends/:id", (req, res) => {
   }
 });
 ```
+
+[🔼 Back to top](#table-of-contents)
 
 ---
 
@@ -129,3 +135,7 @@ npm install nodemon --save-dev
 ```
 
 3. Now you can run `npm run watch`. Here run command is used for custom or user defined script.
+
+[🔼 Back to top](#table-of-contents)
+
+---
