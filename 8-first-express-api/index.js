@@ -1,17 +1,13 @@
 const express = require("express");
 
-const PORT = 5000;
+const { getMessage } = require("./controllers/messages.controller");
+const {
+  postFriend,
+  getFriends,
+  getFriend,
+} = require("./controllers/friends.controller");
 
-const friends = [
-  {
-    id: 0,
-    name: "subrat",
-  },
-  {
-    id: 1,
-    name: "hari",
-  },
-];
+const PORT = 5000;
 
 const app = express();
 
@@ -32,32 +28,12 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 // post request
-app.post("/friends", (req, res) => {
-  if (!req.body.name) {
-    return res.status(400).json({
-      err: "missing friend name",
-    });
-  }
-  const newFriends = {
-    id: friends.length + 1,
-    name: req.body.name,
-  };
-  friends.push(newFriends);
-  res.json(newFriends);
-});
+app.post("/friends", postFriend);
 
-app.get("/friends", (req, res) => res.json(friends));
+app.get("/friends", getFriends);
 
-app.get("/friends/:id", (req, res) => {
-  // read the parameter value
-  const id = req.params.id;
-  const friend = friends[id];
+app.get("/friends/:id", getFriend);
 
-  if (friend) {
-    res.status(200).json(friend);
-  } else {
-    res.status(404).json("data not found");
-  }
-});
+app.get("/messages", getMessage);
 
 app.listen(PORT, () => console.log(`server start in port ${PORT}`));

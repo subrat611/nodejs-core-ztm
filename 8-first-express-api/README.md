@@ -201,3 +201,25 @@ app.use(function (req, res, next) {
 [🔼 Back to top](#table-of-contents)
 
 ---
+
+# Model View Controller in Express
+
+```javascript
+// in index.js
+const { getFriends } = require("./controllers/friends.controller");
+
+app.post("/friends", postFriend);
+
+// in friends.controller.js
+function getFriends(req, res) {
+  res.json(friends);
+}
+
+module.exports = {
+  getFriends,
+};
+```
+
+[🔼 Back to top](#table-of-contents)
+
+---
