@@ -1,11 +1,7 @@
 const express = require("express");
 
 const { getMessage } = require("./controllers/messages.controller");
-const {
-  postFriend,
-  getFriends,
-  getFriend,
-} = require("./controllers/friends.controller");
+const { friendsRouter } = require("./routes/friends.router");
 
 const PORT = 5000;
 
@@ -27,12 +23,7 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-// post request
-app.post("/friends", postFriend);
-
-app.get("/friends", getFriends);
-
-app.get("/friends/:id", getFriend);
+app.use("/friends", friendsRouter);
 
 app.get("/messages", getMessage);
 

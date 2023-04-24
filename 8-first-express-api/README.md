@@ -10,6 +10,7 @@
 - [Middleware](#middleware)
 - [Model View Controller (MVC)](#model-view-controller-mvc)
 - [Model View Controller in Express](#model-view-controller-in-express)
+- [Express Routers](#express-routers)
 
 ---
 
@@ -224,3 +225,43 @@ module.exports = {
 [🔼 Back to top](#table-of-contents)
 
 ---
+
+# Express Routers
+
+1. Router helps to organize the routes into smaller groups.
+2. Router contains it's own set of middleware and routes.
+3. It helps to modularize and easy to manage.
+
+```javascript
+// we create a route by using
+const <name> = express.Router()
+```
+
+- Example
+
+```javascript
+// in friends.router.js
+const express = require("express");
+
+const {
+  postFriend,
+  getFriends,
+  getFriend,
+} = require("../controllers/friends.controller");
+
+const friendsRouter = express.Router();
+
+// post request
+friendsRouter.post("/", postFriend);
+
+friendsRouter.get("/", getFriends);
+friendsRouter.get("/:id", getFriend);
+
+module.exports = {
+  friendsRouter,
+};
+
+// in index.js
+const { friendsRouter } = require("./routes/friends.router");
+app.use("/friends", friendsRouter);
+```
