@@ -11,6 +11,7 @@
 - [Model View Controller (MVC)](#model-view-controller-mvc)
 - [Model View Controller in Express](#model-view-controller-in-express)
 - [Express Routers](#express-routers)
+- [RESTFUL APIs](#restful-apis)
 
 ---
 
@@ -265,3 +266,25 @@ module.exports = {
 const { friendsRouter } = require("./routes/friends.router");
 app.use("/friends", friendsRouter);
 ```
+
+[🔼 Back to top](#table-of-contents)
+
+---
+
+# RESTFUL APIs
+
+1. It is a pattern to build apis.
+2. REST
+  - RE - Representational
+  - S - State
+  - T - Transfer
+3. RES - refer how server makes your data available and T - talks about how it's transfer back to user.
+4. Use existing standards(HTTP, JSON, URL).
+5. Endpoints are collections of data.
+6. Use GET, POST, PUT and DELETE
+7. Client-Server architecture
+8. Stateless and cacheable
+
+[🔼 Back to top](#table-of-contents)
+
+---
